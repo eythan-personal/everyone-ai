@@ -2121,7 +2121,7 @@
 .footer-bg {
   position: absolute;
   inset: 0;
-  background: url('/footer-bg.png') center top / cover no-repeat;
+  background: url('/footer-bg.webp') center top / cover no-repeat;
   z-index: 0;
 }
 

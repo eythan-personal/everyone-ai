@@ -234,28 +234,28 @@ const testimonials = [
     quote: 'I told it to find a romantic restaurant near me and book a table for two. Five minutes later I had a confirmation at a place I never would have found on my own.',
     name: 'Sarah Mitchell',
     role: 'Marketing Director',
-    photo: '/testimonials/sarah.png',
+    photo: '/testimonials/sarah.webp',
     problem: 'Spent 40 min browsing restaurants every date night',
   },
   {
     quote: 'My AI monitors prices on three items I want and bought my son\'s headphones the moment they dropped below my budget. Saved me $60 without lifting a finger.',
     name: 'James Kowalski',
     role: 'Father of two',
-    photo: '/testimonials/james.png',
+    photo: '/testimonials/james.webp',
     problem: 'Missed flash sales because life got in the way',
   },
   {
     quote: 'Every morning I wake up to a clean inbox. Spam archived, receipts filed, and draft replies waiting for me. It gave me back an hour a day.',
     name: 'Amara Lee',
     role: 'Freelance Designer',
-    photo: '/testimonials/amara.png',
+    photo: '/testimonials/amara.webp',
     problem: '200+ unread emails every week',
   },
   {
     quote: 'I asked it to find flights to Rome under $400 and book the best option. It tracked prices for three days and grabbed a $312 fare at 2 AM. I was asleep.',
     name: 'Rafael Dominguez',
     role: 'Software Engineer',
-    photo: '/testimonials/rafael.png',
+    photo: '/testimonials/rafael.webp',
     problem: 'Never had time to hunt for deals',
   },
 ]
@@ -420,7 +420,7 @@ function App() {
           </motion.p>
         </div>
         <div className="action-hero-image">
-          <img src="/test_2.png" alt="Illustrated mountain landscape" />
+          <img src="/test_2.webp" alt="Illustrated mountain landscape" />
         </div>
       </section>
 
