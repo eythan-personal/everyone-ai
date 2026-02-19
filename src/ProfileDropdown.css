@@ -1,0 +1,222 @@
+/* ══════════════════════════════════════
+   PROFILE DROPDOWN
+   ══════════════════════════════════════ */
+
+/* ── Login / Signup (logged-out state) ── */
+.profile-login-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--text-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-login-btn:hover {
+  border-color: var(--text-muted);
+}
+
+.profile-signup-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: #ffffff;
+  background: var(--accent);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-signup-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* ── Avatar Button ── */
+.profile-dropdown-wrap {
+  position: relative;
+}
+
+.profile-avatar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+}
+
+.profile-avatar-btn:hover .profile-avatar {
+  opacity: 0.85;
+}
+
+/* ── Dropdown Panel ── */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  background: #1a1a1a;
+  border-radius: 14px;
+  padding: 6px;
+  z-index: 200;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ── Header ── */
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+}
+
+.profile-dropdown-user {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.profile-dropdown-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.profile-dropdown-plan {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.profile-dropdown-switch {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profile-dropdown-switch:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ── Divider ── */
+.profile-dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 8px;
+}
+
+/* ── Items ── */
+.profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.profile-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-dropdown-item:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: -2px;
+}
+
+.profile-dropdown-item svg {
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+
+/* ── Inverted Nav Overrides ── */
+.navbar--inverted .profile-login-btn,
+.tools-nav--inverted .profile-login-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar--inverted .profile-login-btn:hover,
+.tools-nav--inverted .profile-login-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar--inverted .profile-signup-btn,
+.tools-nav--inverted .profile-signup-btn {
+  background: #ffffff;
+  color: var(--text-primary);
+}
+
+.navbar--inverted .profile-signup-btn:hover,
+.tools-nav--inverted .profile-signup-btn:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.navbar--inverted .profile-avatar,
+.tools-nav--inverted .profile-avatar {
+  background: #ffffff;
+  color: var(--text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .profile-login-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .profile-signup-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .profile-dropdown {
+    width: 240px;
+    right: -8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .profile-login-btn {
+    display: none;
+  }
+}
