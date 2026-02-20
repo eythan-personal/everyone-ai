@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import ProfileDropdown from './ProfileDropdown'
 import './Onboarding.css'
 
 /* ── Data ── */
@@ -123,7 +124,7 @@ export default function Onboarding() {
       >
         <Link to="/" className="onboarding-nav-brand">Everyone AI</Link>
         <div className="onboarding-nav-right">
-          <a href="mailto:support@everyoneai.com" className="onboarding-nav-help">Need help?</a>
+          <ProfileDropdown />
         </div>
       </motion.nav>
 

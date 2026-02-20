@@ -59,9 +59,6 @@ export default function Dashboard() {
       <nav className="dashboard-nav" aria-label="Main navigation">
         <Link to="/" className="dashboard-nav-brand">Everyone AI</Link>
         <div className="dashboard-nav-right">
-          <Link to="/" className="dashboard-nav-link">Home</Link>
-          <Link to="/tools" className="dashboard-nav-link">Tools</Link>
-          <Link to="/dashboard" className="dashboard-nav-link active">Dashboard</Link>
           <ProfileDropdown />
         </div>
       </nav>

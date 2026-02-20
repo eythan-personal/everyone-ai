@@ -272,9 +272,6 @@ export default function Tools() {
           <Link to="/" className="tools-nav-brand">Everyone AI</Link>
         </div>
         <div className="tools-nav-right">
-          <Link to="/" className="tools-nav-link">Home</Link>
-          <Link to="/tools" className="tools-nav-link active">Tools</Link>
-          <a href="/#pricing" className="tools-nav-link">Pricing</a>
           <ProfileDropdown />
         </div>
       </motion.nav>
@@ -403,9 +400,8 @@ export default function Tools() {
                 <div className="footer-col">
                   <h4 className="footer-col-title">Product</h4>
                   <Link to="/tools" className="footer-link">Tools</Link>
-                  <Link to="/tools#pricing" className="footer-link">Pricing</Link>
-                  <Link to="/setup" className="footer-link">Get Started</Link>
-                  <a href="/docs" className="footer-link">Documentation</a>
+                  <Link to="/small-business" className="footer-link">Small Business</Link>
+                  <Link to="/security" className="footer-link">Security</Link>
                 </div>
                 <div className="footer-col">
                   <h4 className="footer-col-title">Company</h4>

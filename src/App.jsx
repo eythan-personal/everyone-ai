@@ -69,6 +69,85 @@ function ScaleIn({ children, className, delay = 0 }) {
   )
 }
 
+/* ── SMB Notifications ── */
+const smbNotifications = [
+  {
+    icon: <img src="/integrations/slack.svg" alt="Slack" width="20" height="20" />,
+    color: '#611f69',
+    title: 'New message in #orders',
+    text: '5 personalized customer follow-ups sent via AI.',
+  },
+  {
+    icon: <img src="/integrations/shopify.svg" alt="Shopify" width="20" height="20" />,
+    color: '#ffffff',
+    title: 'Shopify',
+    text: 'Low stock — 3 items reordered from your supplier.',
+  },
+  {
+    icon: <img src="/integrations/quickbooks.svg" alt="QuickBooks" width="20" height="20" />,
+    color: '#2CA01C',
+    title: 'QuickBooks',
+    text: '3 overdue invoices sent — $4,200 in reminders dispatched.',
+  },
+]
+
+function SmbNotifications() {
+  const [index, setIndex] = useState(0)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const showFirst = setTimeout(() => setVisible(true), 1200)
+    return () => clearTimeout(showFirst)
+  }, [])
+
+  useEffect(() => {
+    if (!visible) return
+    const cycle = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % smbNotifications.length)
+        setVisible(true)
+      }, 600)
+    }, 5500)
+    return () => clearInterval(cycle)
+  }, [visible])
+
+  const notif = smbNotifications[index]
+
+  return (
+    <div className="smb-notification">
+      <AnimatePresence mode="wait">
+        {visible && (
+          <motion.div
+            key={index}
+            className="smb-notif-card"
+            initial={{ opacity: 0, y: -60, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -30, scale: 0.97 }}
+            transition={{
+              type: 'spring',
+              stiffness: 350,
+              damping: 28,
+              mass: 0.8,
+            }}
+          >
+            <div className="smb-notif-icon" style={{ background: notif.color }}>
+              {notif.icon}
+            </div>
+            <div className="smb-notif-body">
+              <div className="smb-notif-header">
+                <span className="smb-notif-title">{notif.title}</span>
+                <span className="smb-notif-time">now</span>
+              </div>
+              <span className="smb-notif-text">{notif.text}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
 /* ── Typing Rotation ── */
 const rotatingPhrases = [
   'Clean inbox',
@@ -307,10 +386,6 @@ function App() {
           <Link to="/" className="navbar-brand">Everyone AI</Link>
         </div>
         <div className="navbar-right">
-          <a href="#features" className="navbar-link">Features</a>
-          <Link to="/tools" className="navbar-link">Tools</Link>
-          <Link to="/tools#pricing" className="navbar-link">Pricing</Link>
-          <a href="#cta" className="navbar-link">Deploy</a>
           <ProfileDropdown />
         </div>
       </motion.nav>
@@ -350,21 +425,27 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.75 }}
         >
-          <Link to="/setup" className="btn-fancy" style={{ textDecoration: 'none' }}>
-            <div className="points_wrapper" aria-hidden="true">
-              <i className="point" /><i className="point" /><i className="point" />
-              <i className="point" /><i className="point" /><i className="point" />
-              <i className="point" /><i className="point" /><i className="point" />
-              <i className="point" />
-            </div>
-            <span className="btn-fancy-inner">
-              Launch Agent
-              <svg className="btn-fancy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </span>
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          >
+            <Link to="/setup" className="btn-fancy" style={{ textDecoration: 'none' }}>
+              <div className="points_wrapper" aria-hidden="true">
+                <i className="point" /><i className="point" /><i className="point" />
+                <i className="point" /><i className="point" /><i className="point" />
+                <i className="point" /><i className="point" /><i className="point" />
+                <i className="point" />
+              </div>
+              <span className="btn-fancy-inner">
+                Launch Agent
+                <svg className="btn-fancy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -388,6 +469,8 @@ function App() {
                 data-tip={ch.name}
                 variants={fadeUp}
                 transition={{ duration: 0.5, delay: 1.0 + i * 0.08 }}
+                whileHover={{ y: -4, scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <img src={ch.src} alt={ch.name} />
               </motion.span>
@@ -720,6 +803,44 @@ function App() {
 
       </motion.section>
 
+      {/* Small Business */}
+      <section className="smb-section" id="small-business">
+        <div className="smb-outer">
+          <motion.div
+            className="smb-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={stagger}
+          >
+            <div className="smb-card-content">
+              <FadeUp>
+                <h2 className="smb-heading">
+                  Everyone AI lets you automate your business with natural language
+                </h2>
+              </FadeUp>
+              <FadeUp delay={0.1}>
+                <p className="smb-subtitle">
+                  Everyone AI can help you with things like automating invoices, scheduling appointments, and managing inventory
+                </p>
+              </FadeUp>
+              <FadeUp delay={0.2}>
+                <Link to="/small-business" className="smb-cta">
+                  Get Everyone AI <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </Link>
+              </FadeUp>
+              <FadeUp delay={0.3} className="smb-tagline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <span>Every business needs an AI employee,<br/>not every business has one.</span>
+              </FadeUp>
+            </div>
+
+            <SmbNotifications />
+          </motion.div>
+        </div>
+
+      </section>
+
       {/* Value prop */}
       <Section className="section" id="about">
         <FadeUp>
@@ -782,9 +903,8 @@ function App() {
                 <div className="footer-col">
                   <h4 className="footer-col-title">Product</h4>
                   <Link to="/tools" className="footer-link">Tools</Link>
-                  <Link to="/tools#pricing" className="footer-link">Pricing</Link>
-                  <Link to="/setup" className="footer-link">Get Started</Link>
-                  <a href="/docs" className="footer-link">Documentation</a>
+                  <Link to="/small-business" className="footer-link">Small Business</Link>
+                  <Link to="/security" className="footer-link">Security</Link>
                 </div>
                 <div className="footer-col">
                   <h4 className="footer-col-title">Company</h4>
