@@ -387,6 +387,11 @@ export default function Tools() {
       <footer ref={footerRef} className="footer">
         <div className="footer-bg" />
         <div className="footer-content">
+          <div className="footer-cta" id="cta">
+            <h2 className="footer-cta-title">Try Everyone AI today</h2>
+            <p className="footer-cta-subtitle">Built on OpenClaw. Self-hosted, open source, and private by default.</p>
+            <Link to="/setup" className="footer-cta-btn">Get Started</Link>
+          </div>
           <div className="footer-nav">
             <div className="footer-top">
               <div className="footer-brand">
